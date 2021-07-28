@@ -1,14 +1,15 @@
 import { Router } from "express";
 import { signUp, signIn, verify } from "../controllers/users.js";
 
-const router = Router()
-// sign up: post request
-router.post('/sign-up', signUp);
-// sign in: post request
-router.post('/sign-in', signIn);
-// verify: get request
-router.get('/verify', verify);
-// change password: post request
+const router = Router();
+
+// Sign Up : POST
+router.post("/sign-up", signUp);
+// Sign In : POST
+router.post("/sign-in", signIn);
+// Verify : GET
+router.get("/verify", verify);
+// Change Password : POST
 router.post("/change-password");
 
 export default router;
