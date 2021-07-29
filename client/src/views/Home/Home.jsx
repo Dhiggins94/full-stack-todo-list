@@ -1,24 +1,23 @@
-import React from 'react'
-import Layout from "../../components/Layout/Layout"
-import { useState, useEffect } from 'react'
-import { getAllTodos } from '../../services/todos'
+import { useState, useEffect } from "react";
+import Layout from "../../components/Layout/Layout";
+import { getAllTodos } from "../../services/todos.js";
 
-
-export default function Home() {
-
-  const [todos, setTodos] = useState([])
+export default function Home(props) {
+  const [todos, setTodos] = useState([]);
 
   useEffect(() => {
     const fetchTodos = async () => {
-      let data = await getAllTodos()
-      setTodos(data)
+      let data = await getAllTodos();
+      setTodos(data);
+    };
+    fetchTodos();
+  }, []);
 
-    }
-    fetchTodos()
-  }, [])
-  return <Layout>
-    {todos.map((todo) => (
-    <div>{todo.name}</div>
-    ))}
-  </Layout>
+  return (
+    <Layout user={props.user}>
+      {todos.map((todo) => (
+        <div>{todo.name}</div>
+      ))}
+    </Layout>
+  );
 }
