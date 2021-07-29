@@ -36,3 +36,13 @@ export const verify = async () => {
     return false;
   }
 }
+
+export const signOut = () => {
+  // dont really need a try catch for this
+  try {
+    localStorage.removeItem("token")
+    return true
+  } catch (e) {
+    throw e
+  }
+}
