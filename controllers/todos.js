@@ -1,13 +1,23 @@
 import Todo from "../models/todo.js";
 
+// export const getAllTodos = async (req, res) => {
+//   try {
+//     const todos = await Todo.find({});
+//     res.json(todos);
+//   } catch (e) {
+//     res.status(500).json({ error: e.message });
+//   }
+// };
+
+// this lets helps us edit our todos
 export const getAllTodos = async (req, res) => {
   try {
-    const todos = await Todo.find({});
-    res.json(todos);
+    const todos = await Todo.find({ userId: req.user })
+    res.json(todos)
   } catch (e) {
-    res.status(500).json({ error: e.message });
+    res.status(400).json({ error: e.message })
   }
-};
+}
 
 export const createTodo = async (req, res) => {
   try {
